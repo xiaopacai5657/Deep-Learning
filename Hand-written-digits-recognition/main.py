@@ -35,7 +35,6 @@ class Window(QMainWindow):
         self.label_result2 = None  # 识别结果标签
         self.label_num2 = None  # 结果显示标签
         self.label_camera3 = None  # 摄像头画面显示标签
-        # self.cap = None  # 摄像头资源
         self.camera_running = False  # 摄像头标志位
         self.btn_open_camera3 = None  # 开启摄像头按钮
         self.btn_save_camera3 = None  # 保存视频帧按钮
@@ -100,14 +99,14 @@ class Window(QMainWindow):
         # 设置 SegmentedWidget 样式
         self.pivot.setStyleSheet("""
             SegmentedWidget {
-                background-color: rgba(255, 255, 255, 0.2); /* 整体背景半透明白色 */
-                border: 2px solid rgba(255, 255, 255, 0.5); /* 半透明白色边框 */
+                background-color: rgba(255, 255, 255, 0.5); /* 整体背景半透明白色 */
+                border: 7px solid rgba(158, 201, 254, 1); /* 半透明白色边框 */
                 border-radius: 10px; /* 圆角 */
             }
 
             /* 普通状态的选项 */
             QPushButton {
-                background-color: rgba(255, 255, 255, 0.3); /* 选项背景半透明 */
+                background-color: rgba(255, 255, 255, 0.5); /* 选项背景半透明 */
                 color: black;  /* 文字颜色黑色 */
                 font:  20px;  /* 文字属性 */
                 padding: 10px 25px; /* 适当增加内边距，使按钮更大 */
@@ -128,8 +127,8 @@ class Window(QMainWindow):
                 font-weight: bold;
             }
         """)
-        self.pivot.setFixedSize(490, 40)  # 设定固定大小
-        self.pivot.move(760, 105)  # 设定绝对位置
+        self.pivot.setFixedSize(400, 40)  # 设定固定大小
+        self.pivot.move(850, 105)  # 设定绝对位置
 
         # 创建 QStackedWidget
         self.stackedWidget = QStackedWidget(self)
@@ -281,7 +280,6 @@ class Window(QMainWindow):
                         font: bold 22px;           /* 字体加粗，22像素 */
                         padding: 5px;              /* 内边距 */
                         text-align: center;        /* 文字居中  */
-                        border: 2px solid black; /* 边框属性 */
                     }
                 """)
         self.label_num1.setGeometry(865, 460, 400, 50)
@@ -398,7 +396,6 @@ class Window(QMainWindow):
                         font: bold 22px;           /* 字体加粗，22像素 */
                         padding: 5px;              /* 内边距 */
                         text-align: center;        /* 文字居中  */
-                        border: 2px solid black; /* 边框属性 */
                     }
                 """)
         self.label_num2.setGeometry(865, 460, 400, 50)
@@ -515,7 +512,6 @@ class Window(QMainWindow):
                         font: bold 22px;           /* 字体加粗，22像素 */
                         padding: 5px;              /* 内边距 */
                         text-align: center;        /* 文字居中  */
-                        border: 2px solid black; /* 边框属性 */
                     }
                 """)
         self.label_num3.setGeometry(865, 460, 400, 50)
@@ -697,7 +693,7 @@ class Window(QMainWindow):
         """识别手写板内容的槽函数（支持背景图像）"""
         try:
             img = cv2.imread(self.current_image_path)  # 读取输入图像
-            img_bw = g_n(img)  # 调用预处理函数，返回二值化后的图像（仅保留数字区域）
+            img_bw = g_n_2(img)  # 调用预处理函数，返回二值化后的图像（仅保留数字区域）
             # 计算每行和每列的白色像素数量
             img_bw_c = img_bw.sum(axis=1) / 255  # 每行的白色像素数（行方向总和 / 255）
             img_bw_r = img_bw.sum(axis=0) / 255  # 每列的白色像素数（列方向总和 / 255）
