@@ -227,7 +227,7 @@ class Window(QMainWindow):
             lambda: [
                 self.handwriting.clear(),
                 self.label_result1.clear(),
-                self.label_num1.setText("识 别 结 果：  准 确 度： "),
+                self.label_num1.setText("识别结果:  准确度:  "),
                 self.createSuccessInfoBar("清除成功", "写字板内容已清空")
             ]
         )
@@ -270,7 +270,7 @@ class Window(QMainWindow):
         self.label_result1.setGeometry(1000, 280, 150, 150)
 
         # 创建结果显示标签
-        self.label_num1 = QLabel("识 别 结 果：  准 确 度： ", self.handwriting_interface)
+        self.label_num1 = QLabel("识别结果:  准确度:  ", self.handwriting_interface)
         self.label_num1.setAlignment(Qt.AlignCenter)  # 使文字垂直居中显示
         self.label_num1.setStyleSheet("""
                     QLabel {
@@ -386,7 +386,7 @@ class Window(QMainWindow):
         self.label_result2.setGeometry(1000, 280, 150, 150)
 
         # 创建结果显示标签
-        self.label_num2 = QLabel("识 别 结 果：  准 确 度： ", self.file_interface)
+        self.label_num2 = QLabel("识别结果:  准确度:  ", self.file_interface)
         self.label_num2.setAlignment(Qt.AlignCenter)  # 使文字垂直居中显示
         self.label_num2.setStyleSheet("""
                     QLabel {
@@ -502,7 +502,7 @@ class Window(QMainWindow):
         self.label_result3.setGeometry(1000, 280, 150, 150)
 
         # 创建结果显示标签
-        self.label_num3 = QLabel("识 别 结 果：  准 确 度： ", self.camera_interface)
+        self.label_num3 = QLabel("识别结果:  准确度:  ", self.camera_interface)
         self.label_num3.setAlignment(Qt.AlignCenter)  # 使文字垂直居中显示
         self.label_num3.setStyleSheet("""
                     QLabel {
@@ -610,8 +610,8 @@ class Window(QMainWindow):
 
             # 显示结果
             show_image_on_label(img_bw_sg_bord, self.label_result1, 150, 150)  # 裁剪并添加边框后的图像
-            self.createSuccessInfoBar("识别成功", f"识别结果：{best_result}，准确率：{best_result_num * 100:.2f}%")
-            self.label_num1.setText(f"识 别 结 果：{best_result} 准 确 度：{best_result_num * 100:.2f}%")
+            self.createSuccessInfoBar("识别成功", f"识别结果:{best_result}，准确率:{best_result_num * 100:.2f}%")
+            self.label_num1.setText(f"识别结果:{best_result}  准确度:{best_result_num * 100:.2f}%")
 
             # 打印结果
             # print(result)
@@ -742,8 +742,8 @@ class Window(QMainWindow):
 
             # 显示结果
             show_image_on_label(img_bw_sg_bord, self.label_result2, 150, 150)  # 裁剪并添加边框后的图像
-            self.createSuccessInfoBar("识别成功", f"识别结果：{best_result}，准确率：{best_result_num * 100:.2f}%")
-            self.label_num2.setText(f"识 别 结 果：{best_result} 准 确 度：{best_result_num * 100:.2f}%")
+            self.createSuccessInfoBar("识别成功", f"识别结果:{best_result}，准确率:{best_result_num * 100:.2f}%")
+            self.label_num2.setText(f"识别结果:{best_result}  准确度:{best_result_num * 100:.2f}%")
 
             # 打印结果
             # print(result)
@@ -760,7 +760,7 @@ class Window(QMainWindow):
                 # 清空图片显示
                 self.label_file2.clear()
                 self.label_result2.clear()
-                self.label_num2.setText("识 别 结 果：  准 确 度： ")
+                self.label_num2.setText("识别结果:  准确度:  ")
                 # 清空保存的图片路径
                 if hasattr(self, 'current_image_path'):
                     self.current_image_path = None
@@ -810,7 +810,7 @@ class Window(QMainWindow):
                     print("The number is:", best_result)
                     # 显示识别结果
                     show_image_on_label(frame, self.label_camera3, 800, 520)
-                    self.label_num3.setText(f"识 别 结 果：{best_result} 准 确 度：{best_result_num * 100:.2f}%")
+                    self.label_num3.setText(f"识别结果:{best_result}  准确度:{best_result_num * 100:.2f}%")
                     # 处理系统事件
                     QApplication.processEvents()
 
@@ -865,7 +865,7 @@ class Window(QMainWindow):
                 del self.cap
                 show_image_on_label(cv2.imread('./ui_img/image2.jpg'), self.label_camera3, 800, 520)
                 self.label_result3.clear()
-                self.label_num3.setText("识 别 结 果：  准 确 度： ")
+                self.label_num3.setText("识别结果:  准确度:  ")
                 # 显示成功提示
                 self.createSuccessInfoBar("操作成功", "摄像头已关闭")
             else:
@@ -927,10 +927,10 @@ class Window(QMainWindow):
         """当界面切换时执行的额外逻辑"""
         self.handwriting.clear()
         self.label_result1.clear()
-        self.label_num1.setText("识 别 结 果：  准 确 度： ")
+        self.label_num1.setText("识别结果:  准确度:  ")
         self.label_file2.clear()
         self.label_result2.clear()
-        self.label_num2.setText("识 别 结 果：  准 确 度： ")
+        self.label_num2.setText("识别结果:  准确度:  ")
         if self.camera_running:
             # 切换标志位状态
             self.camera_running = False
@@ -940,7 +940,7 @@ class Window(QMainWindow):
             del self.cap
             show_image_on_label(cv2.imread('./ui_img/image2.jpg'), self.label_camera3, 800, 520)
             self.label_result3.clear()
-            self.label_num3.setText("识 别 结 果：  准 确 度： ")
+            self.label_num3.setText("识别结果:  准确度:  ")
         if widget == self.handwriting_interface:
             # 在这里添加手写板界面特有的逻辑
             self.createSuccessInfoBar("切换成功", "切换到手写板界面")
