@@ -42,7 +42,7 @@ class Window(QMainWindow):
         self.label_result3 = None  # 识别结果标签
         self.label_num3 = None  # 结果显示标签
         # 设置全屏显示
-        # self.showFullScreen()
+        self.showFullScreen()
         # 隐藏窗口标题栏
         self.setWindowFlags(Qt.FramelessWindowHint)
         # 设置窗口图标
@@ -775,7 +775,7 @@ class Window(QMainWindow):
         """开启摄像头并显示画面"""
         try:
             # 初始化摄像头
-            self.cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+            self.cap = cv2.VideoCapture(0)
             if not self.cap.isOpened():
                 self.createWarningInfoBar("操作提示", "摄像头打开失败，请检查设备连接")
             # 设置摄像头参数
