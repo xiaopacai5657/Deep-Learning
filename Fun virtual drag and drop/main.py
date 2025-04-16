@@ -231,7 +231,7 @@ class HandControlVolume:
 
         # 初始化方块管理器，并创建方块
         squareManager = SquareManager(150)
-        for i in range(5):
+        for i in range(2):
             squareManager.create(200 * i + 20, 200, 0.6)
 
         # 初始化手部检测模块
@@ -331,7 +331,7 @@ class HandControlVolume:
                             f"Active: {'None' if squareManager.active_index == -1 else squareManager.active_index}",
                             (10, 100), cv2.FONT_HERSHEY_TRIPLEX, 1, (51, 51, 204), 2)  # 柔和的红色字体
                 # 绘制方框
-                cv2.rectangle(self.image, (1070, 490), (1220, 640), (51, 51, 204), 2)
+                cv2.rectangle(self.image, (1000, 200), (1200, 400), (51, 51, 204), 2)
 
                 # 包含换行符的文本
                 text = "Placement\n   Area"
@@ -349,9 +349,9 @@ class HandControlVolume:
                 total_text_height = len(lines) * line_height
 
                 # 计算文字的 x 坐标，使其在方框内水平居中
-                text_x = 1070 + (1220 - 1070 - total_text_width) // 2
+                text_x = 1000 + (1200 - 1000 - total_text_width) // 2
                 # 计算文字的起始 y 坐标，使其在方框内垂直居中
-                text_y = 490 + (640 - 490 - total_text_height) // 2 + line_height
+                text_y = 200 + (400 - 200 - total_text_height) // 2 + line_height
 
                 # 逐行绘制文字
                 for line in lines:
