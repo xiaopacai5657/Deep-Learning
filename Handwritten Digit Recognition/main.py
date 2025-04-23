@@ -42,11 +42,16 @@ class Window(QMainWindow):
         self.label_result3 = None  # 识别结果标签
         self.label_num3 = None  # 结果显示标签
         # 设置全屏显示
-        self.showFullScreen()
+        # self.showFullScreen()
+        # 设置窗口标题
+        self.setWindowTitle("手写数字识别")
         # 隐藏窗口标题栏
-        self.setWindowFlags(Qt.FramelessWindowHint)
+        # self.setWindowFlags(Qt.FramelessWindowHint)
         # 设置窗口图标
         self.setWindowIcon(QIcon("./ui_img/icon.png"))
+        # 禁用最大化按钮和双击标题栏最大化
+        self.setWindowFlags(self.windowFlags() & ~Qt.WindowMaximizeButtonHint)
+        self.setWindowFlags(self.windowFlags() | Qt.CustomizeWindowHint)
         # 设置窗口大小（固定大小）
         self.setFixedSize(1280, 720)
         # 设置背景图片
