@@ -333,7 +333,7 @@ class HandControlVolume:
                 #             cv2.FONT_HERSHEY_TRIPLEX , 3, (255, 0, 0), 3)
 
                 cv2.putText(self.image,
-                            f"Active: {'None' if squareManager.active_index == -1 else squareManager.active_index}",
+                            f"Active: {'None' if squareManager.active_index == -1 else squareManager.active_index + 1}",
                             (10, 100), cv2.FONT_HERSHEY_TRIPLEX, 1, (51, 51, 204), 2)  # 柔和的红色字体
                 # 绘制方框
                 cv2.rectangle(self.image, (1000, 200), (1200, 400), (51, 51, 204), 2)
